@@ -1,0 +1,2339 @@
+type AggregateComment {
+  count: Int!
+}
+
+type AggregatePersonnelDocuments {
+  count: Int!
+}
+
+type AggregatePersonnelInterview {
+  count: Int!
+}
+
+type AggregatePersonnelMeta {
+  count: Int!
+}
+
+type AggregatePersonnelPhotos {
+  count: Int!
+}
+
+type AggregatePersonnelReferences {
+  count: Int!
+}
+
+type AggregatePost {
+  count: Int!
+}
+
+type AggregateUser {
+  count: Int!
+}
+
+type BatchPayload {
+  count: Long!
+}
+
+type Comment {
+  id: ID!
+  content: String
+  is_deleted: Boolean
+}
+
+type CommentConnection {
+  pageInfo: PageInfo!
+  edges: [CommentEdge]!
+  aggregate: AggregateComment!
+}
+
+input CommentCreateInput {
+  content: String
+  is_deleted: Boolean
+}
+
+input CommentCreateManyInput {
+  create: [CommentCreateInput!]
+  connect: [CommentWhereUniqueInput!]
+}
+
+type CommentEdge {
+  node: Comment!
+  cursor: String!
+}
+
+enum CommentOrderByInput {
+  id_ASC
+  id_DESC
+  content_ASC
+  content_DESC
+  is_deleted_ASC
+  is_deleted_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type CommentPreviousValues {
+  id: ID!
+  content: String
+  is_deleted: Boolean
+}
+
+input CommentScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  content: String
+  content_not: String
+  content_in: [String!]
+  content_not_in: [String!]
+  content_lt: String
+  content_lte: String
+  content_gt: String
+  content_gte: String
+  content_contains: String
+  content_not_contains: String
+  content_starts_with: String
+  content_not_starts_with: String
+  content_ends_with: String
+  content_not_ends_with: String
+  is_deleted: Boolean
+  is_deleted_not: Boolean
+  AND: [CommentScalarWhereInput!]
+  OR: [CommentScalarWhereInput!]
+  NOT: [CommentScalarWhereInput!]
+}
+
+type CommentSubscriptionPayload {
+  mutation: MutationType!
+  node: Comment
+  updatedFields: [String!]
+  previousValues: CommentPreviousValues
+}
+
+input CommentSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: CommentWhereInput
+  AND: [CommentSubscriptionWhereInput!]
+  OR: [CommentSubscriptionWhereInput!]
+  NOT: [CommentSubscriptionWhereInput!]
+}
+
+input CommentUpdateDataInput {
+  content: String
+  is_deleted: Boolean
+}
+
+input CommentUpdateInput {
+  content: String
+  is_deleted: Boolean
+}
+
+input CommentUpdateManyDataInput {
+  content: String
+  is_deleted: Boolean
+}
+
+input CommentUpdateManyInput {
+  create: [CommentCreateInput!]
+  update: [CommentUpdateWithWhereUniqueNestedInput!]
+  upsert: [CommentUpsertWithWhereUniqueNestedInput!]
+  delete: [CommentWhereUniqueInput!]
+  connect: [CommentWhereUniqueInput!]
+  set: [CommentWhereUniqueInput!]
+  disconnect: [CommentWhereUniqueInput!]
+  deleteMany: [CommentScalarWhereInput!]
+  updateMany: [CommentUpdateManyWithWhereNestedInput!]
+}
+
+input CommentUpdateManyMutationInput {
+  content: String
+  is_deleted: Boolean
+}
+
+input CommentUpdateManyWithWhereNestedInput {
+  where: CommentScalarWhereInput!
+  data: CommentUpdateManyDataInput!
+}
+
+input CommentUpdateWithWhereUniqueNestedInput {
+  where: CommentWhereUniqueInput!
+  data: CommentUpdateDataInput!
+}
+
+input CommentUpsertWithWhereUniqueNestedInput {
+  where: CommentWhereUniqueInput!
+  update: CommentUpdateDataInput!
+  create: CommentCreateInput!
+}
+
+input CommentWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  content: String
+  content_not: String
+  content_in: [String!]
+  content_not_in: [String!]
+  content_lt: String
+  content_lte: String
+  content_gt: String
+  content_gte: String
+  content_contains: String
+  content_not_contains: String
+  content_starts_with: String
+  content_not_starts_with: String
+  content_ends_with: String
+  content_not_ends_with: String
+  is_deleted: Boolean
+  is_deleted_not: Boolean
+  AND: [CommentWhereInput!]
+  OR: [CommentWhereInput!]
+  NOT: [CommentWhereInput!]
+}
+
+input CommentWhereUniqueInput {
+  id: ID
+}
+
+scalar DateTime
+
+scalar Long
+
+type Mutation {
+  createComment(data: CommentCreateInput!): Comment!
+  updateComment(data: CommentUpdateInput!, where: CommentWhereUniqueInput!): Comment
+  updateManyComments(data: CommentUpdateManyMutationInput!, where: CommentWhereInput): BatchPayload!
+  upsertComment(where: CommentWhereUniqueInput!, create: CommentCreateInput!, update: CommentUpdateInput!): Comment!
+  deleteComment(where: CommentWhereUniqueInput!): Comment
+  deleteManyComments(where: CommentWhereInput): BatchPayload!
+  createPersonnelDocuments(data: PersonnelDocumentsCreateInput!): PersonnelDocuments!
+  updatePersonnelDocuments(data: PersonnelDocumentsUpdateInput!, where: PersonnelDocumentsWhereUniqueInput!): PersonnelDocuments
+  updateManyPersonnelDocumentses(data: PersonnelDocumentsUpdateManyMutationInput!, where: PersonnelDocumentsWhereInput): BatchPayload!
+  upsertPersonnelDocuments(where: PersonnelDocumentsWhereUniqueInput!, create: PersonnelDocumentsCreateInput!, update: PersonnelDocumentsUpdateInput!): PersonnelDocuments!
+  deletePersonnelDocuments(where: PersonnelDocumentsWhereUniqueInput!): PersonnelDocuments
+  deleteManyPersonnelDocumentses(where: PersonnelDocumentsWhereInput): BatchPayload!
+  createPersonnelInterview(data: PersonnelInterviewCreateInput!): PersonnelInterview!
+  updatePersonnelInterview(data: PersonnelInterviewUpdateInput!, where: PersonnelInterviewWhereUniqueInput!): PersonnelInterview
+  updateManyPersonnelInterviews(data: PersonnelInterviewUpdateManyMutationInput!, where: PersonnelInterviewWhereInput): BatchPayload!
+  upsertPersonnelInterview(where: PersonnelInterviewWhereUniqueInput!, create: PersonnelInterviewCreateInput!, update: PersonnelInterviewUpdateInput!): PersonnelInterview!
+  deletePersonnelInterview(where: PersonnelInterviewWhereUniqueInput!): PersonnelInterview
+  deleteManyPersonnelInterviews(where: PersonnelInterviewWhereInput): BatchPayload!
+  createPersonnelMeta(data: PersonnelMetaCreateInput!): PersonnelMeta!
+  updatePersonnelMeta(data: PersonnelMetaUpdateInput!, where: PersonnelMetaWhereUniqueInput!): PersonnelMeta
+  updateManyPersonnelMetas(data: PersonnelMetaUpdateManyMutationInput!, where: PersonnelMetaWhereInput): BatchPayload!
+  upsertPersonnelMeta(where: PersonnelMetaWhereUniqueInput!, create: PersonnelMetaCreateInput!, update: PersonnelMetaUpdateInput!): PersonnelMeta!
+  deletePersonnelMeta(where: PersonnelMetaWhereUniqueInput!): PersonnelMeta
+  deleteManyPersonnelMetas(where: PersonnelMetaWhereInput): BatchPayload!
+  createPersonnelPhotos(data: PersonnelPhotosCreateInput!): PersonnelPhotos!
+  updatePersonnelPhotos(data: PersonnelPhotosUpdateInput!, where: PersonnelPhotosWhereUniqueInput!): PersonnelPhotos
+  updateManyPersonnelPhotoses(data: PersonnelPhotosUpdateManyMutationInput!, where: PersonnelPhotosWhereInput): BatchPayload!
+  upsertPersonnelPhotos(where: PersonnelPhotosWhereUniqueInput!, create: PersonnelPhotosCreateInput!, update: PersonnelPhotosUpdateInput!): PersonnelPhotos!
+  deletePersonnelPhotos(where: PersonnelPhotosWhereUniqueInput!): PersonnelPhotos
+  deleteManyPersonnelPhotoses(where: PersonnelPhotosWhereInput): BatchPayload!
+  createPersonnelReferences(data: PersonnelReferencesCreateInput!): PersonnelReferences!
+  updatePersonnelReferences(data: PersonnelReferencesUpdateInput!, where: PersonnelReferencesWhereUniqueInput!): PersonnelReferences
+  updateManyPersonnelReferenceses(data: PersonnelReferencesUpdateManyMutationInput!, where: PersonnelReferencesWhereInput): BatchPayload!
+  upsertPersonnelReferences(where: PersonnelReferencesWhereUniqueInput!, create: PersonnelReferencesCreateInput!, update: PersonnelReferencesUpdateInput!): PersonnelReferences!
+  deletePersonnelReferences(where: PersonnelReferencesWhereUniqueInput!): PersonnelReferences
+  deleteManyPersonnelReferenceses(where: PersonnelReferencesWhereInput): BatchPayload!
+  createPost(data: PostCreateInput!): Post!
+  updatePost(data: PostUpdateInput!, where: PostWhereUniqueInput!): Post
+  updateManyPosts(data: PostUpdateManyMutationInput!, where: PostWhereInput): BatchPayload!
+  upsertPost(where: PostWhereUniqueInput!, create: PostCreateInput!, update: PostUpdateInput!): Post!
+  deletePost(where: PostWhereUniqueInput!): Post
+  deleteManyPosts(where: PostWhereInput): BatchPayload!
+  createUser(data: UserCreateInput!): User!
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
+  upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
+  deleteUser(where: UserWhereUniqueInput!): User
+  deleteManyUsers(where: UserWhereInput): BatchPayload!
+}
+
+enum MutationType {
+  CREATED
+  UPDATED
+  DELETED
+}
+
+interface Node {
+  id: ID!
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+type PersonnelDocuments {
+  id: ID!
+  doc_name: String!
+  doc_type: PersonnelDocumentTypes!
+  filename: String!
+  mimetype: String!
+  encoding: String!
+  url: String!
+  is_verified: Boolean
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type PersonnelDocumentsConnection {
+  pageInfo: PageInfo!
+  edges: [PersonnelDocumentsEdge]!
+  aggregate: AggregatePersonnelDocuments!
+}
+
+input PersonnelDocumentsCreateInput {
+  doc_name: String!
+  doc_type: PersonnelDocumentTypes!
+  filename: String!
+  mimetype: String!
+  encoding: String!
+  url: String!
+  is_verified: Boolean
+}
+
+input PersonnelDocumentsCreateManyInput {
+  create: [PersonnelDocumentsCreateInput!]
+  connect: [PersonnelDocumentsWhereUniqueInput!]
+}
+
+type PersonnelDocumentsEdge {
+  node: PersonnelDocuments!
+  cursor: String!
+}
+
+enum PersonnelDocumentsOrderByInput {
+  id_ASC
+  id_DESC
+  doc_name_ASC
+  doc_name_DESC
+  doc_type_ASC
+  doc_type_DESC
+  filename_ASC
+  filename_DESC
+  mimetype_ASC
+  mimetype_DESC
+  encoding_ASC
+  encoding_DESC
+  url_ASC
+  url_DESC
+  is_verified_ASC
+  is_verified_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type PersonnelDocumentsPreviousValues {
+  id: ID!
+  doc_name: String!
+  doc_type: PersonnelDocumentTypes!
+  filename: String!
+  mimetype: String!
+  encoding: String!
+  url: String!
+  is_verified: Boolean
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+input PersonnelDocumentsScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  doc_name: String
+  doc_name_not: String
+  doc_name_in: [String!]
+  doc_name_not_in: [String!]
+  doc_name_lt: String
+  doc_name_lte: String
+  doc_name_gt: String
+  doc_name_gte: String
+  doc_name_contains: String
+  doc_name_not_contains: String
+  doc_name_starts_with: String
+  doc_name_not_starts_with: String
+  doc_name_ends_with: String
+  doc_name_not_ends_with: String
+  doc_type: PersonnelDocumentTypes
+  doc_type_not: PersonnelDocumentTypes
+  doc_type_in: [PersonnelDocumentTypes!]
+  doc_type_not_in: [PersonnelDocumentTypes!]
+  filename: String
+  filename_not: String
+  filename_in: [String!]
+  filename_not_in: [String!]
+  filename_lt: String
+  filename_lte: String
+  filename_gt: String
+  filename_gte: String
+  filename_contains: String
+  filename_not_contains: String
+  filename_starts_with: String
+  filename_not_starts_with: String
+  filename_ends_with: String
+  filename_not_ends_with: String
+  mimetype: String
+  mimetype_not: String
+  mimetype_in: [String!]
+  mimetype_not_in: [String!]
+  mimetype_lt: String
+  mimetype_lte: String
+  mimetype_gt: String
+  mimetype_gte: String
+  mimetype_contains: String
+  mimetype_not_contains: String
+  mimetype_starts_with: String
+  mimetype_not_starts_with: String
+  mimetype_ends_with: String
+  mimetype_not_ends_with: String
+  encoding: String
+  encoding_not: String
+  encoding_in: [String!]
+  encoding_not_in: [String!]
+  encoding_lt: String
+  encoding_lte: String
+  encoding_gt: String
+  encoding_gte: String
+  encoding_contains: String
+  encoding_not_contains: String
+  encoding_starts_with: String
+  encoding_not_starts_with: String
+  encoding_ends_with: String
+  encoding_not_ends_with: String
+  url: String
+  url_not: String
+  url_in: [String!]
+  url_not_in: [String!]
+  url_lt: String
+  url_lte: String
+  url_gt: String
+  url_gte: String
+  url_contains: String
+  url_not_contains: String
+  url_starts_with: String
+  url_not_starts_with: String
+  url_ends_with: String
+  url_not_ends_with: String
+  is_verified: Boolean
+  is_verified_not: Boolean
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [PersonnelDocumentsScalarWhereInput!]
+  OR: [PersonnelDocumentsScalarWhereInput!]
+  NOT: [PersonnelDocumentsScalarWhereInput!]
+}
+
+type PersonnelDocumentsSubscriptionPayload {
+  mutation: MutationType!
+  node: PersonnelDocuments
+  updatedFields: [String!]
+  previousValues: PersonnelDocumentsPreviousValues
+}
+
+input PersonnelDocumentsSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: PersonnelDocumentsWhereInput
+  AND: [PersonnelDocumentsSubscriptionWhereInput!]
+  OR: [PersonnelDocumentsSubscriptionWhereInput!]
+  NOT: [PersonnelDocumentsSubscriptionWhereInput!]
+}
+
+input PersonnelDocumentsUpdateDataInput {
+  doc_name: String
+  doc_type: PersonnelDocumentTypes
+  filename: String
+  mimetype: String
+  encoding: String
+  url: String
+  is_verified: Boolean
+}
+
+input PersonnelDocumentsUpdateInput {
+  doc_name: String
+  doc_type: PersonnelDocumentTypes
+  filename: String
+  mimetype: String
+  encoding: String
+  url: String
+  is_verified: Boolean
+}
+
+input PersonnelDocumentsUpdateManyDataInput {
+  doc_name: String
+  doc_type: PersonnelDocumentTypes
+  filename: String
+  mimetype: String
+  encoding: String
+  url: String
+  is_verified: Boolean
+}
+
+input PersonnelDocumentsUpdateManyInput {
+  create: [PersonnelDocumentsCreateInput!]
+  update: [PersonnelDocumentsUpdateWithWhereUniqueNestedInput!]
+  upsert: [PersonnelDocumentsUpsertWithWhereUniqueNestedInput!]
+  delete: [PersonnelDocumentsWhereUniqueInput!]
+  connect: [PersonnelDocumentsWhereUniqueInput!]
+  set: [PersonnelDocumentsWhereUniqueInput!]
+  disconnect: [PersonnelDocumentsWhereUniqueInput!]
+  deleteMany: [PersonnelDocumentsScalarWhereInput!]
+  updateMany: [PersonnelDocumentsUpdateManyWithWhereNestedInput!]
+}
+
+input PersonnelDocumentsUpdateManyMutationInput {
+  doc_name: String
+  doc_type: PersonnelDocumentTypes
+  filename: String
+  mimetype: String
+  encoding: String
+  url: String
+  is_verified: Boolean
+}
+
+input PersonnelDocumentsUpdateManyWithWhereNestedInput {
+  where: PersonnelDocumentsScalarWhereInput!
+  data: PersonnelDocumentsUpdateManyDataInput!
+}
+
+input PersonnelDocumentsUpdateWithWhereUniqueNestedInput {
+  where: PersonnelDocumentsWhereUniqueInput!
+  data: PersonnelDocumentsUpdateDataInput!
+}
+
+input PersonnelDocumentsUpsertWithWhereUniqueNestedInput {
+  where: PersonnelDocumentsWhereUniqueInput!
+  update: PersonnelDocumentsUpdateDataInput!
+  create: PersonnelDocumentsCreateInput!
+}
+
+input PersonnelDocumentsWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  doc_name: String
+  doc_name_not: String
+  doc_name_in: [String!]
+  doc_name_not_in: [String!]
+  doc_name_lt: String
+  doc_name_lte: String
+  doc_name_gt: String
+  doc_name_gte: String
+  doc_name_contains: String
+  doc_name_not_contains: String
+  doc_name_starts_with: String
+  doc_name_not_starts_with: String
+  doc_name_ends_with: String
+  doc_name_not_ends_with: String
+  doc_type: PersonnelDocumentTypes
+  doc_type_not: PersonnelDocumentTypes
+  doc_type_in: [PersonnelDocumentTypes!]
+  doc_type_not_in: [PersonnelDocumentTypes!]
+  filename: String
+  filename_not: String
+  filename_in: [String!]
+  filename_not_in: [String!]
+  filename_lt: String
+  filename_lte: String
+  filename_gt: String
+  filename_gte: String
+  filename_contains: String
+  filename_not_contains: String
+  filename_starts_with: String
+  filename_not_starts_with: String
+  filename_ends_with: String
+  filename_not_ends_with: String
+  mimetype: String
+  mimetype_not: String
+  mimetype_in: [String!]
+  mimetype_not_in: [String!]
+  mimetype_lt: String
+  mimetype_lte: String
+  mimetype_gt: String
+  mimetype_gte: String
+  mimetype_contains: String
+  mimetype_not_contains: String
+  mimetype_starts_with: String
+  mimetype_not_starts_with: String
+  mimetype_ends_with: String
+  mimetype_not_ends_with: String
+  encoding: String
+  encoding_not: String
+  encoding_in: [String!]
+  encoding_not_in: [String!]
+  encoding_lt: String
+  encoding_lte: String
+  encoding_gt: String
+  encoding_gte: String
+  encoding_contains: String
+  encoding_not_contains: String
+  encoding_starts_with: String
+  encoding_not_starts_with: String
+  encoding_ends_with: String
+  encoding_not_ends_with: String
+  url: String
+  url_not: String
+  url_in: [String!]
+  url_not_in: [String!]
+  url_lt: String
+  url_lte: String
+  url_gt: String
+  url_gte: String
+  url_contains: String
+  url_not_contains: String
+  url_starts_with: String
+  url_not_starts_with: String
+  url_ends_with: String
+  url_not_ends_with: String
+  is_verified: Boolean
+  is_verified_not: Boolean
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [PersonnelDocumentsWhereInput!]
+  OR: [PersonnelDocumentsWhereInput!]
+  NOT: [PersonnelDocumentsWhereInput!]
+}
+
+input PersonnelDocumentsWhereUniqueInput {
+  id: ID
+}
+
+enum PersonnelDocumentTypes {
+  GUARD_CARD
+  BATON_PERMIT
+  CPR_CERTIFICATE
+  RESUME
+  EXPOSED_FIREARM_PERMIT
+  CCW_PERMIT
+  POST_CERTIFICATION
+  DD214
+  OTHERS
+}
+
+type PersonnelInterview {
+  id: ID!
+  interviewed_by: User!
+  interviewed_date: DateTime!
+  status: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type PersonnelInterviewConnection {
+  pageInfo: PageInfo!
+  edges: [PersonnelInterviewEdge]!
+  aggregate: AggregatePersonnelInterview!
+}
+
+input PersonnelInterviewCreateInput {
+  interviewed_by: UserCreateOneInput!
+  interviewed_date: DateTime!
+  status: String!
+}
+
+input PersonnelInterviewCreateManyInput {
+  create: [PersonnelInterviewCreateInput!]
+  connect: [PersonnelInterviewWhereUniqueInput!]
+}
+
+type PersonnelInterviewEdge {
+  node: PersonnelInterview!
+  cursor: String!
+}
+
+enum PersonnelInterviewOrderByInput {
+  id_ASC
+  id_DESC
+  interviewed_date_ASC
+  interviewed_date_DESC
+  status_ASC
+  status_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type PersonnelInterviewPreviousValues {
+  id: ID!
+  interviewed_date: DateTime!
+  status: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+input PersonnelInterviewScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  interviewed_date: DateTime
+  interviewed_date_not: DateTime
+  interviewed_date_in: [DateTime!]
+  interviewed_date_not_in: [DateTime!]
+  interviewed_date_lt: DateTime
+  interviewed_date_lte: DateTime
+  interviewed_date_gt: DateTime
+  interviewed_date_gte: DateTime
+  status: String
+  status_not: String
+  status_in: [String!]
+  status_not_in: [String!]
+  status_lt: String
+  status_lte: String
+  status_gt: String
+  status_gte: String
+  status_contains: String
+  status_not_contains: String
+  status_starts_with: String
+  status_not_starts_with: String
+  status_ends_with: String
+  status_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [PersonnelInterviewScalarWhereInput!]
+  OR: [PersonnelInterviewScalarWhereInput!]
+  NOT: [PersonnelInterviewScalarWhereInput!]
+}
+
+type PersonnelInterviewSubscriptionPayload {
+  mutation: MutationType!
+  node: PersonnelInterview
+  updatedFields: [String!]
+  previousValues: PersonnelInterviewPreviousValues
+}
+
+input PersonnelInterviewSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: PersonnelInterviewWhereInput
+  AND: [PersonnelInterviewSubscriptionWhereInput!]
+  OR: [PersonnelInterviewSubscriptionWhereInput!]
+  NOT: [PersonnelInterviewSubscriptionWhereInput!]
+}
+
+input PersonnelInterviewUpdateDataInput {
+  interviewed_by: UserUpdateOneRequiredInput
+  interviewed_date: DateTime
+  status: String
+}
+
+input PersonnelInterviewUpdateInput {
+  interviewed_by: UserUpdateOneRequiredInput
+  interviewed_date: DateTime
+  status: String
+}
+
+input PersonnelInterviewUpdateManyDataInput {
+  interviewed_date: DateTime
+  status: String
+}
+
+input PersonnelInterviewUpdateManyInput {
+  create: [PersonnelInterviewCreateInput!]
+  update: [PersonnelInterviewUpdateWithWhereUniqueNestedInput!]
+  upsert: [PersonnelInterviewUpsertWithWhereUniqueNestedInput!]
+  delete: [PersonnelInterviewWhereUniqueInput!]
+  connect: [PersonnelInterviewWhereUniqueInput!]
+  set: [PersonnelInterviewWhereUniqueInput!]
+  disconnect: [PersonnelInterviewWhereUniqueInput!]
+  deleteMany: [PersonnelInterviewScalarWhereInput!]
+  updateMany: [PersonnelInterviewUpdateManyWithWhereNestedInput!]
+}
+
+input PersonnelInterviewUpdateManyMutationInput {
+  interviewed_date: DateTime
+  status: String
+}
+
+input PersonnelInterviewUpdateManyWithWhereNestedInput {
+  where: PersonnelInterviewScalarWhereInput!
+  data: PersonnelInterviewUpdateManyDataInput!
+}
+
+input PersonnelInterviewUpdateWithWhereUniqueNestedInput {
+  where: PersonnelInterviewWhereUniqueInput!
+  data: PersonnelInterviewUpdateDataInput!
+}
+
+input PersonnelInterviewUpsertWithWhereUniqueNestedInput {
+  where: PersonnelInterviewWhereUniqueInput!
+  update: PersonnelInterviewUpdateDataInput!
+  create: PersonnelInterviewCreateInput!
+}
+
+input PersonnelInterviewWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  interviewed_by: UserWhereInput
+  interviewed_date: DateTime
+  interviewed_date_not: DateTime
+  interviewed_date_in: [DateTime!]
+  interviewed_date_not_in: [DateTime!]
+  interviewed_date_lt: DateTime
+  interviewed_date_lte: DateTime
+  interviewed_date_gt: DateTime
+  interviewed_date_gte: DateTime
+  status: String
+  status_not: String
+  status_in: [String!]
+  status_not_in: [String!]
+  status_lt: String
+  status_lte: String
+  status_gt: String
+  status_gte: String
+  status_contains: String
+  status_not_contains: String
+  status_starts_with: String
+  status_not_starts_with: String
+  status_ends_with: String
+  status_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [PersonnelInterviewWhereInput!]
+  OR: [PersonnelInterviewWhereInput!]
+  NOT: [PersonnelInterviewWhereInput!]
+}
+
+input PersonnelInterviewWhereUniqueInput {
+  id: ID
+}
+
+type PersonnelMeta {
+  id: ID!
+  user: User!
+  driving_licence_id: String
+  biograhpy: String
+  experience: String
+  certification: String
+  social_security_number: String
+  documents(where: PersonnelDocumentsWhereInput, orderBy: PersonnelDocumentsOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [PersonnelDocuments!]
+  photos(where: PersonnelPhotosWhereInput, orderBy: PersonnelPhotosOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [PersonnelPhotos!]
+  references(where: PersonnelReferencesWhereInput, orderBy: PersonnelReferencesOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [PersonnelReferences!]
+  interviewed_by(where: PersonnelInterviewWhereInput, orderBy: PersonnelInterviewOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [PersonnelInterview!]
+  is_background_checked: Boolean
+  is_verified: Boolean
+  is_consent_checked: Boolean
+  is_creds_verified: Boolean
+  is_reference_verified: Boolean
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type PersonnelMetaConnection {
+  pageInfo: PageInfo!
+  edges: [PersonnelMetaEdge]!
+  aggregate: AggregatePersonnelMeta!
+}
+
+input PersonnelMetaCreateInput {
+  user: UserCreateOneInput!
+  driving_licence_id: String
+  biograhpy: String
+  experience: String
+  certification: String
+  social_security_number: String
+  documents: PersonnelDocumentsCreateManyInput
+  photos: PersonnelPhotosCreateManyInput
+  references: PersonnelReferencesCreateManyInput
+  interviewed_by: PersonnelInterviewCreateManyInput
+  is_background_checked: Boolean
+  is_verified: Boolean
+  is_consent_checked: Boolean
+  is_creds_verified: Boolean
+  is_reference_verified: Boolean
+}
+
+type PersonnelMetaEdge {
+  node: PersonnelMeta!
+  cursor: String!
+}
+
+enum PersonnelMetaOrderByInput {
+  id_ASC
+  id_DESC
+  driving_licence_id_ASC
+  driving_licence_id_DESC
+  biograhpy_ASC
+  biograhpy_DESC
+  experience_ASC
+  experience_DESC
+  certification_ASC
+  certification_DESC
+  social_security_number_ASC
+  social_security_number_DESC
+  is_background_checked_ASC
+  is_background_checked_DESC
+  is_verified_ASC
+  is_verified_DESC
+  is_consent_checked_ASC
+  is_consent_checked_DESC
+  is_creds_verified_ASC
+  is_creds_verified_DESC
+  is_reference_verified_ASC
+  is_reference_verified_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type PersonnelMetaPreviousValues {
+  id: ID!
+  driving_licence_id: String
+  biograhpy: String
+  experience: String
+  certification: String
+  social_security_number: String
+  is_background_checked: Boolean
+  is_verified: Boolean
+  is_consent_checked: Boolean
+  is_creds_verified: Boolean
+  is_reference_verified: Boolean
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type PersonnelMetaSubscriptionPayload {
+  mutation: MutationType!
+  node: PersonnelMeta
+  updatedFields: [String!]
+  previousValues: PersonnelMetaPreviousValues
+}
+
+input PersonnelMetaSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: PersonnelMetaWhereInput
+  AND: [PersonnelMetaSubscriptionWhereInput!]
+  OR: [PersonnelMetaSubscriptionWhereInput!]
+  NOT: [PersonnelMetaSubscriptionWhereInput!]
+}
+
+input PersonnelMetaUpdateInput {
+  user: UserUpdateOneRequiredInput
+  driving_licence_id: String
+  biograhpy: String
+  experience: String
+  certification: String
+  social_security_number: String
+  documents: PersonnelDocumentsUpdateManyInput
+  photos: PersonnelPhotosUpdateManyInput
+  references: PersonnelReferencesUpdateManyInput
+  interviewed_by: PersonnelInterviewUpdateManyInput
+  is_background_checked: Boolean
+  is_verified: Boolean
+  is_consent_checked: Boolean
+  is_creds_verified: Boolean
+  is_reference_verified: Boolean
+}
+
+input PersonnelMetaUpdateManyMutationInput {
+  driving_licence_id: String
+  biograhpy: String
+  experience: String
+  certification: String
+  social_security_number: String
+  is_background_checked: Boolean
+  is_verified: Boolean
+  is_consent_checked: Boolean
+  is_creds_verified: Boolean
+  is_reference_verified: Boolean
+}
+
+input PersonnelMetaWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  user: UserWhereInput
+  driving_licence_id: String
+  driving_licence_id_not: String
+  driving_licence_id_in: [String!]
+  driving_licence_id_not_in: [String!]
+  driving_licence_id_lt: String
+  driving_licence_id_lte: String
+  driving_licence_id_gt: String
+  driving_licence_id_gte: String
+  driving_licence_id_contains: String
+  driving_licence_id_not_contains: String
+  driving_licence_id_starts_with: String
+  driving_licence_id_not_starts_with: String
+  driving_licence_id_ends_with: String
+  driving_licence_id_not_ends_with: String
+  biograhpy: String
+  biograhpy_not: String
+  biograhpy_in: [String!]
+  biograhpy_not_in: [String!]
+  biograhpy_lt: String
+  biograhpy_lte: String
+  biograhpy_gt: String
+  biograhpy_gte: String
+  biograhpy_contains: String
+  biograhpy_not_contains: String
+  biograhpy_starts_with: String
+  biograhpy_not_starts_with: String
+  biograhpy_ends_with: String
+  biograhpy_not_ends_with: String
+  experience: String
+  experience_not: String
+  experience_in: [String!]
+  experience_not_in: [String!]
+  experience_lt: String
+  experience_lte: String
+  experience_gt: String
+  experience_gte: String
+  experience_contains: String
+  experience_not_contains: String
+  experience_starts_with: String
+  experience_not_starts_with: String
+  experience_ends_with: String
+  experience_not_ends_with: String
+  certification: String
+  certification_not: String
+  certification_in: [String!]
+  certification_not_in: [String!]
+  certification_lt: String
+  certification_lte: String
+  certification_gt: String
+  certification_gte: String
+  certification_contains: String
+  certification_not_contains: String
+  certification_starts_with: String
+  certification_not_starts_with: String
+  certification_ends_with: String
+  certification_not_ends_with: String
+  social_security_number: String
+  social_security_number_not: String
+  social_security_number_in: [String!]
+  social_security_number_not_in: [String!]
+  social_security_number_lt: String
+  social_security_number_lte: String
+  social_security_number_gt: String
+  social_security_number_gte: String
+  social_security_number_contains: String
+  social_security_number_not_contains: String
+  social_security_number_starts_with: String
+  social_security_number_not_starts_with: String
+  social_security_number_ends_with: String
+  social_security_number_not_ends_with: String
+  documents_every: PersonnelDocumentsWhereInput
+  documents_some: PersonnelDocumentsWhereInput
+  documents_none: PersonnelDocumentsWhereInput
+  photos_every: PersonnelPhotosWhereInput
+  photos_some: PersonnelPhotosWhereInput
+  photos_none: PersonnelPhotosWhereInput
+  references_every: PersonnelReferencesWhereInput
+  references_some: PersonnelReferencesWhereInput
+  references_none: PersonnelReferencesWhereInput
+  interviewed_by_every: PersonnelInterviewWhereInput
+  interviewed_by_some: PersonnelInterviewWhereInput
+  interviewed_by_none: PersonnelInterviewWhereInput
+  is_background_checked: Boolean
+  is_background_checked_not: Boolean
+  is_verified: Boolean
+  is_verified_not: Boolean
+  is_consent_checked: Boolean
+  is_consent_checked_not: Boolean
+  is_creds_verified: Boolean
+  is_creds_verified_not: Boolean
+  is_reference_verified: Boolean
+  is_reference_verified_not: Boolean
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [PersonnelMetaWhereInput!]
+  OR: [PersonnelMetaWhereInput!]
+  NOT: [PersonnelMetaWhereInput!]
+}
+
+input PersonnelMetaWhereUniqueInput {
+  id: ID
+}
+
+type PersonnelPhotos {
+  id: ID!
+  filename: String!
+  mimetype: String!
+  encoding: String!
+  url: String!
+  is_primary: Boolean
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type PersonnelPhotosConnection {
+  pageInfo: PageInfo!
+  edges: [PersonnelPhotosEdge]!
+  aggregate: AggregatePersonnelPhotos!
+}
+
+input PersonnelPhotosCreateInput {
+  filename: String!
+  mimetype: String!
+  encoding: String!
+  url: String!
+  is_primary: Boolean
+}
+
+input PersonnelPhotosCreateManyInput {
+  create: [PersonnelPhotosCreateInput!]
+  connect: [PersonnelPhotosWhereUniqueInput!]
+}
+
+type PersonnelPhotosEdge {
+  node: PersonnelPhotos!
+  cursor: String!
+}
+
+enum PersonnelPhotosOrderByInput {
+  id_ASC
+  id_DESC
+  filename_ASC
+  filename_DESC
+  mimetype_ASC
+  mimetype_DESC
+  encoding_ASC
+  encoding_DESC
+  url_ASC
+  url_DESC
+  is_primary_ASC
+  is_primary_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type PersonnelPhotosPreviousValues {
+  id: ID!
+  filename: String!
+  mimetype: String!
+  encoding: String!
+  url: String!
+  is_primary: Boolean
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+input PersonnelPhotosScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  filename: String
+  filename_not: String
+  filename_in: [String!]
+  filename_not_in: [String!]
+  filename_lt: String
+  filename_lte: String
+  filename_gt: String
+  filename_gte: String
+  filename_contains: String
+  filename_not_contains: String
+  filename_starts_with: String
+  filename_not_starts_with: String
+  filename_ends_with: String
+  filename_not_ends_with: String
+  mimetype: String
+  mimetype_not: String
+  mimetype_in: [String!]
+  mimetype_not_in: [String!]
+  mimetype_lt: String
+  mimetype_lte: String
+  mimetype_gt: String
+  mimetype_gte: String
+  mimetype_contains: String
+  mimetype_not_contains: String
+  mimetype_starts_with: String
+  mimetype_not_starts_with: String
+  mimetype_ends_with: String
+  mimetype_not_ends_with: String
+  encoding: String
+  encoding_not: String
+  encoding_in: [String!]
+  encoding_not_in: [String!]
+  encoding_lt: String
+  encoding_lte: String
+  encoding_gt: String
+  encoding_gte: String
+  encoding_contains: String
+  encoding_not_contains: String
+  encoding_starts_with: String
+  encoding_not_starts_with: String
+  encoding_ends_with: String
+  encoding_not_ends_with: String
+  url: String
+  url_not: String
+  url_in: [String!]
+  url_not_in: [String!]
+  url_lt: String
+  url_lte: String
+  url_gt: String
+  url_gte: String
+  url_contains: String
+  url_not_contains: String
+  url_starts_with: String
+  url_not_starts_with: String
+  url_ends_with: String
+  url_not_ends_with: String
+  is_primary: Boolean
+  is_primary_not: Boolean
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [PersonnelPhotosScalarWhereInput!]
+  OR: [PersonnelPhotosScalarWhereInput!]
+  NOT: [PersonnelPhotosScalarWhereInput!]
+}
+
+type PersonnelPhotosSubscriptionPayload {
+  mutation: MutationType!
+  node: PersonnelPhotos
+  updatedFields: [String!]
+  previousValues: PersonnelPhotosPreviousValues
+}
+
+input PersonnelPhotosSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: PersonnelPhotosWhereInput
+  AND: [PersonnelPhotosSubscriptionWhereInput!]
+  OR: [PersonnelPhotosSubscriptionWhereInput!]
+  NOT: [PersonnelPhotosSubscriptionWhereInput!]
+}
+
+input PersonnelPhotosUpdateDataInput {
+  filename: String
+  mimetype: String
+  encoding: String
+  url: String
+  is_primary: Boolean
+}
+
+input PersonnelPhotosUpdateInput {
+  filename: String
+  mimetype: String
+  encoding: String
+  url: String
+  is_primary: Boolean
+}
+
+input PersonnelPhotosUpdateManyDataInput {
+  filename: String
+  mimetype: String
+  encoding: String
+  url: String
+  is_primary: Boolean
+}
+
+input PersonnelPhotosUpdateManyInput {
+  create: [PersonnelPhotosCreateInput!]
+  update: [PersonnelPhotosUpdateWithWhereUniqueNestedInput!]
+  upsert: [PersonnelPhotosUpsertWithWhereUniqueNestedInput!]
+  delete: [PersonnelPhotosWhereUniqueInput!]
+  connect: [PersonnelPhotosWhereUniqueInput!]
+  set: [PersonnelPhotosWhereUniqueInput!]
+  disconnect: [PersonnelPhotosWhereUniqueInput!]
+  deleteMany: [PersonnelPhotosScalarWhereInput!]
+  updateMany: [PersonnelPhotosUpdateManyWithWhereNestedInput!]
+}
+
+input PersonnelPhotosUpdateManyMutationInput {
+  filename: String
+  mimetype: String
+  encoding: String
+  url: String
+  is_primary: Boolean
+}
+
+input PersonnelPhotosUpdateManyWithWhereNestedInput {
+  where: PersonnelPhotosScalarWhereInput!
+  data: PersonnelPhotosUpdateManyDataInput!
+}
+
+input PersonnelPhotosUpdateWithWhereUniqueNestedInput {
+  where: PersonnelPhotosWhereUniqueInput!
+  data: PersonnelPhotosUpdateDataInput!
+}
+
+input PersonnelPhotosUpsertWithWhereUniqueNestedInput {
+  where: PersonnelPhotosWhereUniqueInput!
+  update: PersonnelPhotosUpdateDataInput!
+  create: PersonnelPhotosCreateInput!
+}
+
+input PersonnelPhotosWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  filename: String
+  filename_not: String
+  filename_in: [String!]
+  filename_not_in: [String!]
+  filename_lt: String
+  filename_lte: String
+  filename_gt: String
+  filename_gte: String
+  filename_contains: String
+  filename_not_contains: String
+  filename_starts_with: String
+  filename_not_starts_with: String
+  filename_ends_with: String
+  filename_not_ends_with: String
+  mimetype: String
+  mimetype_not: String
+  mimetype_in: [String!]
+  mimetype_not_in: [String!]
+  mimetype_lt: String
+  mimetype_lte: String
+  mimetype_gt: String
+  mimetype_gte: String
+  mimetype_contains: String
+  mimetype_not_contains: String
+  mimetype_starts_with: String
+  mimetype_not_starts_with: String
+  mimetype_ends_with: String
+  mimetype_not_ends_with: String
+  encoding: String
+  encoding_not: String
+  encoding_in: [String!]
+  encoding_not_in: [String!]
+  encoding_lt: String
+  encoding_lte: String
+  encoding_gt: String
+  encoding_gte: String
+  encoding_contains: String
+  encoding_not_contains: String
+  encoding_starts_with: String
+  encoding_not_starts_with: String
+  encoding_ends_with: String
+  encoding_not_ends_with: String
+  url: String
+  url_not: String
+  url_in: [String!]
+  url_not_in: [String!]
+  url_lt: String
+  url_lte: String
+  url_gt: String
+  url_gte: String
+  url_contains: String
+  url_not_contains: String
+  url_starts_with: String
+  url_not_starts_with: String
+  url_ends_with: String
+  url_not_ends_with: String
+  is_primary: Boolean
+  is_primary_not: Boolean
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [PersonnelPhotosWhereInput!]
+  OR: [PersonnelPhotosWhereInput!]
+  NOT: [PersonnelPhotosWhereInput!]
+}
+
+input PersonnelPhotosWhereUniqueInput {
+  id: ID
+}
+
+type PersonnelReferences {
+  id: ID!
+  email: String!
+  name: String!
+  phone: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type PersonnelReferencesConnection {
+  pageInfo: PageInfo!
+  edges: [PersonnelReferencesEdge]!
+  aggregate: AggregatePersonnelReferences!
+}
+
+input PersonnelReferencesCreateInput {
+  email: String!
+  name: String!
+  phone: String!
+}
+
+input PersonnelReferencesCreateManyInput {
+  create: [PersonnelReferencesCreateInput!]
+  connect: [PersonnelReferencesWhereUniqueInput!]
+}
+
+type PersonnelReferencesEdge {
+  node: PersonnelReferences!
+  cursor: String!
+}
+
+enum PersonnelReferencesOrderByInput {
+  id_ASC
+  id_DESC
+  email_ASC
+  email_DESC
+  name_ASC
+  name_DESC
+  phone_ASC
+  phone_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type PersonnelReferencesPreviousValues {
+  id: ID!
+  email: String!
+  name: String!
+  phone: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+input PersonnelReferencesScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  email: String
+  email_not: String
+  email_in: [String!]
+  email_not_in: [String!]
+  email_lt: String
+  email_lte: String
+  email_gt: String
+  email_gte: String
+  email_contains: String
+  email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  phone: String
+  phone_not: String
+  phone_in: [String!]
+  phone_not_in: [String!]
+  phone_lt: String
+  phone_lte: String
+  phone_gt: String
+  phone_gte: String
+  phone_contains: String
+  phone_not_contains: String
+  phone_starts_with: String
+  phone_not_starts_with: String
+  phone_ends_with: String
+  phone_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [PersonnelReferencesScalarWhereInput!]
+  OR: [PersonnelReferencesScalarWhereInput!]
+  NOT: [PersonnelReferencesScalarWhereInput!]
+}
+
+type PersonnelReferencesSubscriptionPayload {
+  mutation: MutationType!
+  node: PersonnelReferences
+  updatedFields: [String!]
+  previousValues: PersonnelReferencesPreviousValues
+}
+
+input PersonnelReferencesSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: PersonnelReferencesWhereInput
+  AND: [PersonnelReferencesSubscriptionWhereInput!]
+  OR: [PersonnelReferencesSubscriptionWhereInput!]
+  NOT: [PersonnelReferencesSubscriptionWhereInput!]
+}
+
+input PersonnelReferencesUpdateDataInput {
+  email: String
+  name: String
+  phone: String
+}
+
+input PersonnelReferencesUpdateInput {
+  email: String
+  name: String
+  phone: String
+}
+
+input PersonnelReferencesUpdateManyDataInput {
+  email: String
+  name: String
+  phone: String
+}
+
+input PersonnelReferencesUpdateManyInput {
+  create: [PersonnelReferencesCreateInput!]
+  update: [PersonnelReferencesUpdateWithWhereUniqueNestedInput!]
+  upsert: [PersonnelReferencesUpsertWithWhereUniqueNestedInput!]
+  delete: [PersonnelReferencesWhereUniqueInput!]
+  connect: [PersonnelReferencesWhereUniqueInput!]
+  set: [PersonnelReferencesWhereUniqueInput!]
+  disconnect: [PersonnelReferencesWhereUniqueInput!]
+  deleteMany: [PersonnelReferencesScalarWhereInput!]
+  updateMany: [PersonnelReferencesUpdateManyWithWhereNestedInput!]
+}
+
+input PersonnelReferencesUpdateManyMutationInput {
+  email: String
+  name: String
+  phone: String
+}
+
+input PersonnelReferencesUpdateManyWithWhereNestedInput {
+  where: PersonnelReferencesScalarWhereInput!
+  data: PersonnelReferencesUpdateManyDataInput!
+}
+
+input PersonnelReferencesUpdateWithWhereUniqueNestedInput {
+  where: PersonnelReferencesWhereUniqueInput!
+  data: PersonnelReferencesUpdateDataInput!
+}
+
+input PersonnelReferencesUpsertWithWhereUniqueNestedInput {
+  where: PersonnelReferencesWhereUniqueInput!
+  update: PersonnelReferencesUpdateDataInput!
+  create: PersonnelReferencesCreateInput!
+}
+
+input PersonnelReferencesWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  email: String
+  email_not: String
+  email_in: [String!]
+  email_not_in: [String!]
+  email_lt: String
+  email_lte: String
+  email_gt: String
+  email_gte: String
+  email_contains: String
+  email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  phone: String
+  phone_not: String
+  phone_in: [String!]
+  phone_not_in: [String!]
+  phone_lt: String
+  phone_lte: String
+  phone_gt: String
+  phone_gte: String
+  phone_contains: String
+  phone_not_contains: String
+  phone_starts_with: String
+  phone_not_starts_with: String
+  phone_ends_with: String
+  phone_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [PersonnelReferencesWhereInput!]
+  OR: [PersonnelReferencesWhereInput!]
+  NOT: [PersonnelReferencesWhereInput!]
+}
+
+input PersonnelReferencesWhereUniqueInput {
+  id: ID
+}
+
+type Post {
+  id: ID!
+  published: Boolean!
+  title: String!
+  content: String!
+  comments(where: CommentWhereInput, orderBy: CommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Comment!]
+}
+
+type PostConnection {
+  pageInfo: PageInfo!
+  edges: [PostEdge]!
+  aggregate: AggregatePost!
+}
+
+input PostCreateInput {
+  published: Boolean
+  title: String!
+  content: String!
+  comments: CommentCreateManyInput
+}
+
+type PostEdge {
+  node: Post!
+  cursor: String!
+}
+
+enum PostOrderByInput {
+  id_ASC
+  id_DESC
+  published_ASC
+  published_DESC
+  title_ASC
+  title_DESC
+  content_ASC
+  content_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type PostPreviousValues {
+  id: ID!
+  published: Boolean!
+  title: String!
+  content: String!
+}
+
+type PostSubscriptionPayload {
+  mutation: MutationType!
+  node: Post
+  updatedFields: [String!]
+  previousValues: PostPreviousValues
+}
+
+input PostSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: PostWhereInput
+  AND: [PostSubscriptionWhereInput!]
+  OR: [PostSubscriptionWhereInput!]
+  NOT: [PostSubscriptionWhereInput!]
+}
+
+input PostUpdateInput {
+  published: Boolean
+  title: String
+  content: String
+  comments: CommentUpdateManyInput
+}
+
+input PostUpdateManyMutationInput {
+  published: Boolean
+  title: String
+  content: String
+}
+
+input PostWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  published: Boolean
+  published_not: Boolean
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  content: String
+  content_not: String
+  content_in: [String!]
+  content_not_in: [String!]
+  content_lt: String
+  content_lte: String
+  content_gt: String
+  content_gte: String
+  content_contains: String
+  content_not_contains: String
+  content_starts_with: String
+  content_not_starts_with: String
+  content_ends_with: String
+  content_not_ends_with: String
+  comments_every: CommentWhereInput
+  comments_some: CommentWhereInput
+  comments_none: CommentWhereInput
+  AND: [PostWhereInput!]
+  OR: [PostWhereInput!]
+  NOT: [PostWhereInput!]
+}
+
+input PostWhereUniqueInput {
+  id: ID
+}
+
+type Query {
+  comment(where: CommentWhereUniqueInput!): Comment
+  comments(where: CommentWhereInput, orderBy: CommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Comment]!
+  commentsConnection(where: CommentWhereInput, orderBy: CommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CommentConnection!
+  personnelDocuments(where: PersonnelDocumentsWhereUniqueInput!): PersonnelDocuments
+  personnelDocumentses(where: PersonnelDocumentsWhereInput, orderBy: PersonnelDocumentsOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [PersonnelDocuments]!
+  personnelDocumentsesConnection(where: PersonnelDocumentsWhereInput, orderBy: PersonnelDocumentsOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PersonnelDocumentsConnection!
+  personnelInterview(where: PersonnelInterviewWhereUniqueInput!): PersonnelInterview
+  personnelInterviews(where: PersonnelInterviewWhereInput, orderBy: PersonnelInterviewOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [PersonnelInterview]!
+  personnelInterviewsConnection(where: PersonnelInterviewWhereInput, orderBy: PersonnelInterviewOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PersonnelInterviewConnection!
+  personnelMeta(where: PersonnelMetaWhereUniqueInput!): PersonnelMeta
+  personnelMetas(where: PersonnelMetaWhereInput, orderBy: PersonnelMetaOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [PersonnelMeta]!
+  personnelMetasConnection(where: PersonnelMetaWhereInput, orderBy: PersonnelMetaOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PersonnelMetaConnection!
+  personnelPhotos(where: PersonnelPhotosWhereUniqueInput!): PersonnelPhotos
+  personnelPhotoses(where: PersonnelPhotosWhereInput, orderBy: PersonnelPhotosOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [PersonnelPhotos]!
+  personnelPhotosesConnection(where: PersonnelPhotosWhereInput, orderBy: PersonnelPhotosOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PersonnelPhotosConnection!
+  personnelReferences(where: PersonnelReferencesWhereUniqueInput!): PersonnelReferences
+  personnelReferenceses(where: PersonnelReferencesWhereInput, orderBy: PersonnelReferencesOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [PersonnelReferences]!
+  personnelReferencesesConnection(where: PersonnelReferencesWhereInput, orderBy: PersonnelReferencesOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PersonnelReferencesConnection!
+  post(where: PostWhereUniqueInput!): Post
+  posts(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Post]!
+  postsConnection(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PostConnection!
+  user(where: UserWhereUniqueInput!): User
+  users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
+  usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
+  node(id: ID!): Node
+}
+
+type Subscription {
+  comment(where: CommentSubscriptionWhereInput): CommentSubscriptionPayload
+  personnelDocuments(where: PersonnelDocumentsSubscriptionWhereInput): PersonnelDocumentsSubscriptionPayload
+  personnelInterview(where: PersonnelInterviewSubscriptionWhereInput): PersonnelInterviewSubscriptionPayload
+  personnelMeta(where: PersonnelMetaSubscriptionWhereInput): PersonnelMetaSubscriptionPayload
+  personnelPhotos(where: PersonnelPhotosSubscriptionWhereInput): PersonnelPhotosSubscriptionPayload
+  personnelReferences(where: PersonnelReferencesSubscriptionWhereInput): PersonnelReferencesSubscriptionPayload
+  post(where: PostSubscriptionWhereInput): PostSubscriptionPayload
+  user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
+}
+
+type User {
+  id: ID!
+  email: String!
+  password: String!
+  name: String
+  address: String
+  city: String
+  zip: String
+  phone: String
+  company: String
+  date_of_birth: DateTime
+  type: UserType
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type UserConnection {
+  pageInfo: PageInfo!
+  edges: [UserEdge]!
+  aggregate: AggregateUser!
+}
+
+input UserCreateInput {
+  email: String!
+  password: String!
+  name: String
+  address: String
+  city: String
+  zip: String
+  phone: String
+  company: String
+  date_of_birth: DateTime
+  type: UserType
+}
+
+input UserCreateOneInput {
+  create: UserCreateInput
+  connect: UserWhereUniqueInput
+}
+
+type UserEdge {
+  node: User!
+  cursor: String!
+}
+
+enum UserOrderByInput {
+  id_ASC
+  id_DESC
+  email_ASC
+  email_DESC
+  password_ASC
+  password_DESC
+  name_ASC
+  name_DESC
+  address_ASC
+  address_DESC
+  city_ASC
+  city_DESC
+  zip_ASC
+  zip_DESC
+  phone_ASC
+  phone_DESC
+  company_ASC
+  company_DESC
+  date_of_birth_ASC
+  date_of_birth_DESC
+  type_ASC
+  type_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type UserPreviousValues {
+  id: ID!
+  email: String!
+  password: String!
+  name: String
+  address: String
+  city: String
+  zip: String
+  phone: String
+  company: String
+  date_of_birth: DateTime
+  type: UserType
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type UserSubscriptionPayload {
+  mutation: MutationType!
+  node: User
+  updatedFields: [String!]
+  previousValues: UserPreviousValues
+}
+
+input UserSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: UserWhereInput
+  AND: [UserSubscriptionWhereInput!]
+  OR: [UserSubscriptionWhereInput!]
+  NOT: [UserSubscriptionWhereInput!]
+}
+
+enum UserType {
+  ADMIN
+  CLIENT
+  PERSONNEL
+}
+
+input UserUpdateDataInput {
+  email: String
+  password: String
+  name: String
+  address: String
+  city: String
+  zip: String
+  phone: String
+  company: String
+  date_of_birth: DateTime
+  type: UserType
+}
+
+input UserUpdateInput {
+  email: String
+  password: String
+  name: String
+  address: String
+  city: String
+  zip: String
+  phone: String
+  company: String
+  date_of_birth: DateTime
+  type: UserType
+}
+
+input UserUpdateManyMutationInput {
+  email: String
+  password: String
+  name: String
+  address: String
+  city: String
+  zip: String
+  phone: String
+  company: String
+  date_of_birth: DateTime
+  type: UserType
+}
+
+input UserUpdateOneRequiredInput {
+  create: UserCreateInput
+  update: UserUpdateDataInput
+  upsert: UserUpsertNestedInput
+  connect: UserWhereUniqueInput
+}
+
+input UserUpsertNestedInput {
+  update: UserUpdateDataInput!
+  create: UserCreateInput!
+}
+
+input UserWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  email: String
+  email_not: String
+  email_in: [String!]
+  email_not_in: [String!]
+  email_lt: String
+  email_lte: String
+  email_gt: String
+  email_gte: String
+  email_contains: String
+  email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
+  password: String
+  password_not: String
+  password_in: [String!]
+  password_not_in: [String!]
+  password_lt: String
+  password_lte: String
+  password_gt: String
+  password_gte: String
+  password_contains: String
+  password_not_contains: String
+  password_starts_with: String
+  password_not_starts_with: String
+  password_ends_with: String
+  password_not_ends_with: String
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  address: String
+  address_not: String
+  address_in: [String!]
+  address_not_in: [String!]
+  address_lt: String
+  address_lte: String
+  address_gt: String
+  address_gte: String
+  address_contains: String
+  address_not_contains: String
+  address_starts_with: String
+  address_not_starts_with: String
+  address_ends_with: String
+  address_not_ends_with: String
+  city: String
+  city_not: String
+  city_in: [String!]
+  city_not_in: [String!]
+  city_lt: String
+  city_lte: String
+  city_gt: String
+  city_gte: String
+  city_contains: String
+  city_not_contains: String
+  city_starts_with: String
+  city_not_starts_with: String
+  city_ends_with: String
+  city_not_ends_with: String
+  zip: String
+  zip_not: String
+  zip_in: [String!]
+  zip_not_in: [String!]
+  zip_lt: String
+  zip_lte: String
+  zip_gt: String
+  zip_gte: String
+  zip_contains: String
+  zip_not_contains: String
+  zip_starts_with: String
+  zip_not_starts_with: String
+  zip_ends_with: String
+  zip_not_ends_with: String
+  phone: String
+  phone_not: String
+  phone_in: [String!]
+  phone_not_in: [String!]
+  phone_lt: String
+  phone_lte: String
+  phone_gt: String
+  phone_gte: String
+  phone_contains: String
+  phone_not_contains: String
+  phone_starts_with: String
+  phone_not_starts_with: String
+  phone_ends_with: String
+  phone_not_ends_with: String
+  company: String
+  company_not: String
+  company_in: [String!]
+  company_not_in: [String!]
+  company_lt: String
+  company_lte: String
+  company_gt: String
+  company_gte: String
+  company_contains: String
+  company_not_contains: String
+  company_starts_with: String
+  company_not_starts_with: String
+  company_ends_with: String
+  company_not_ends_with: String
+  date_of_birth: DateTime
+  date_of_birth_not: DateTime
+  date_of_birth_in: [DateTime!]
+  date_of_birth_not_in: [DateTime!]
+  date_of_birth_lt: DateTime
+  date_of_birth_lte: DateTime
+  date_of_birth_gt: DateTime
+  date_of_birth_gte: DateTime
+  type: UserType
+  type_not: UserType
+  type_in: [UserType!]
+  type_not_in: [UserType!]
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [UserWhereInput!]
+  OR: [UserWhereInput!]
+  NOT: [UserWhereInput!]
+}
+
+input UserWhereUniqueInput {
+  id: ID
+  email: String
+}

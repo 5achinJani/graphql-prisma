@@ -1,0 +1,7 @@
+src/generated
+prisma
+build
+.env
+.env.development
+.env.production
+.env.test

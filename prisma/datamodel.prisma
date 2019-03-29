@@ -1,0 +1,110 @@
+type Post {
+  id: ID! @unique
+  published: Boolean! @default(value: "false")
+  title: String!
+  content: String!
+  comments: [Comment]
+}
+
+type Comment {
+  id: ID! @unique
+  content: String
+  is_deleted: Boolean @default(value: "false")
+}
+
+enum UserType {
+  ADMIN
+  CLIENT
+  PERSONNEL
+}
+
+enum PersonnelDocumentTypes {
+  GUARD_CARD
+  BATON_PERMIT
+  CPR_CERTIFICATE
+  RESUME
+  EXPOSED_FIREARM_PERMIT
+  CCW_PERMIT
+  POST_CERTIFICATION
+  DD214
+  OTHERS
+}
+
+type User {
+  id: ID! @unique
+  email: String! @unique
+  password: String!
+  name: String
+  address: String
+  city: String
+  zip: String
+  phone: String
+  company: String
+  date_of_birth: DateTime
+  type: UserType
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type PersonnelMeta {
+  id: ID! @unique
+  user: User!
+  driving_licence_id: String
+  biograhpy: String
+  experience: String
+  certification: String
+  social_security_number: String
+  documents: [PersonnelDocuments!]
+  photos: [PersonnelPhotos!]
+  references: [PersonnelReferences!]
+  interviewed_by: [PersonnelInterview!]
+  is_background_checked: Boolean @default(value: "false")
+  is_verified: Boolean @default(value: "false")
+  is_consent_checked: Boolean @default(value: "false")
+  is_creds_verified: Boolean @default(value: "false")
+  is_reference_verified: Boolean @default(value: "false")
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type PersonnelDocuments {
+  id: ID! @unique
+  doc_name: String!
+  doc_type: PersonnelDocumentTypes!
+  filename: String!
+  mimetype: String!
+  encoding: String!
+  url: String!
+  is_verified: Boolean @default(value: "false")
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type PersonnelPhotos {
+  id: ID! @unique
+  filename: String!
+  mimetype: String!
+  encoding: String!
+  url: String!
+  is_primary: Boolean @default(value: "false")
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type PersonnelReferences {
+  id: ID! @unique
+  email: String!
+  name: String!
+  phone: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type PersonnelInterview {
+  id: ID! @unique
+  interviewed_by: User!
+  interviewed_date: DateTime!
+  status: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}

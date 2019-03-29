@@ -1,0 +1,164 @@
+scalar DateTime
+scalar Upload
+
+type Query {
+  personnelUser(id: ID!): PersonnelUser
+  personnelUsers: [PersonnelUser!]!
+  users: [User!]!
+}
+
+type Mutation {
+  personnelSignUp(data: CreateUserInput!): PersonnelAuthPayload!
+  personnelLogin(data: LoginUserInput!): PersonnelAuthPayload!
+  updatePersonnelUserProfile(data: PersonnelUserInput!): PersonnelUser!
+  singleUploadPersonnelDoc(input: PersonnelDocInput): PersonnelUser!
+  createPersonnelReferences(
+    data: CreatePersonnelReferencesInput!
+  ): PersonnelUser!
+  updatePersonnelReferences(
+    data: UpdatePersonnelReferencesInput!
+  ): PersonnelUser!
+}
+
+enum UserType {
+  ADMIN
+  CLIENT
+  PERSONNEL
+}
+
+enum PersonnelDocumentTypes {
+  GUARD_CARD
+  BATON_PERMIT
+  CPR_CERTIFICATE
+  RESUME
+  EXPOSED_FIREARM_PERMIT
+  CCW_PERMIT
+  POST_CERTIFICATION
+  DD214
+  OTHERS
+}
+
+input UserFieldsInput {
+  name: String
+  address: String
+  city: String
+  zip: String
+  phone: String
+  company: String
+  date_of_birth: DateTime
+}
+
+type User {
+  id: ID!
+  email: String!
+  name: String
+  address: String
+  city: String
+  zip: String
+  phone: String
+  company: String
+  date_of_birth: DateTime
+}
+
+type PersonnelUser {
+  id: ID!
+  user: User
+  driving_licence_id: String
+  biograhpy: String
+  experience: String
+  certification: String
+  social_security_number: String
+  documents: [PersonnelDocuments!]
+  references: [PersonnelReferences!]
+  is_background_checked: Boolean
+  is_verified: Boolean
+  is_consent_checked: Boolean
+  is_creds_verified: Boolean
+  is_reference_verified: Boolean
+}
+
+type PersonnelDocuments {
+  id: ID!
+  doc_name: String!
+  doc_type: PersonnelDocumentTypes!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  filename: String!
+  mimetype: String!
+  encoding: String!
+  url: String!
+  is_verified: Boolean!
+}
+
+type PersonnelAuthPayload {
+  token: String!
+  data: PersonnelUser!
+}
+
+input PersonnelUserInput {
+  """
+  PersonnelUser.id
+  """
+  id: ID!
+  driving_licence_id: String
+  biograhpy: String
+  experience: String
+  certification: String
+  social_security_number: String
+  user: UserFieldsInput
+}
+
+input CreateUserInput {
+  email: String!
+  password: String!
+}
+
+input LoginUserInput {
+  email: String!
+  password: String!
+}
+
+type File {
+  id: ID!
+  filename: String!
+  mimetype: String!
+  encoding: String!
+  url: String!
+}
+
+input PersonnelDocInput {
+  personnel_id: ID!
+  doc_id: ID
+  doc_type: PersonnelDocumentTypes!
+  file: Upload!
+}
+
+type PersonnelReferences {
+  id: ID!
+  email: String!
+  name: String!
+  phone: String!
+}
+
+input CreatePersonnelReferencesInputFields {
+  email: String!
+  name: String!
+  phone: String!
+}
+
+input UpdatePersonnelReferencesInputFields {
+  id: ID!
+  email: String!
+  name: String!
+  phone: String!
+}
+
+input CreatePersonnelReferencesInput {
+  personnel_id: ID!
+  references: [CreatePersonnelReferencesInputFields!]!
+}
+
+input UpdatePersonnelReferencesInput {
+  personnel_id: ID!
+  references: [UpdatePersonnelReferencesInputFields!]!
+}

@@ -1,0 +1,49 @@
+{
+  "name": "my-app",
+  "scripts": {
+    "start": "node build/main.js",
+    "prisma": "prisma",
+    "dev": "backpack",
+    "build": "backpack build",
+    "deploy": "yarn build && now && now alias",
+    "now-deploy-dev": "yarn build && now --local-config=now.development.json",
+    "now-deploy-prod": "yarn build && now --local-config=now.production.json",
+    "prisma-deploy-dev": "prisma deploy --env-file .env.development",
+    "prisma-deploy-prod": "prisma deploy --env-file .env.production",
+    "dev-deploy": "yarn prisma-deploy-dev && yarn now-deploy-dev",
+    "prod-deploy": "yarn prisma-deploy-prod && yarn now-deploy-prod",
+    "eslint-init": "eslint --init",
+    "prettify": "prettier --write **/*.{js,json}"
+  },
+  "lint-staged": {
+    "*.{js,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "dependencies": {
+    "aws-sdk": "^2.419.0",
+    "bcryptjs": "^2.4.3",
+    "graphql-yoga": "1.17.4",
+    "jsonwebtoken": "^8.5.0",
+    "prisma-client-lib": "1.27.3"
+  },
+  "devDependencies": {
+    "backpack-core": "^0.8.3",
+    "dotenv": "^6.2.0",
+    "dotenv-webpack": "^1.7.0",
+    "eslint": "^5.15.1",
+    "extra-watch-webpack-plugin": "^1.0.3",
+    "graphql-import-loader": "^0.2.1",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.5",
+    "now": "^14.2.3",
+    "prettier": "^1.16.4",
+    "prisma": "1.27.3"
+  }
+}
