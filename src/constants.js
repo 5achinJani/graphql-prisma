@@ -60,3 +60,18 @@ export const personnel_document_type = {
     isMultipleAllowed: true
   }
 };
+
+export const personnel_application_status = {
+  PENDING: {
+    id: "PENDING",
+    name: "Pending"
+  },
+  HIRED: {
+    id: "HIRED",
+    name: "Hired"
+  },
+  REJECTED: {
+    id: "REJECTED",
+    name: "Rejected"
+  }
+};

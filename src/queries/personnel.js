@@ -1,3 +1,5 @@
+import { personnel_application_status } from "../constants";
+
 export const Query = {
   users: (root, args, context) => {
     return context.prisma.users();
@@ -71,7 +73,9 @@ export const PersonnelUser = {
   },
   documents: async (parent, args, context, info) => {
     const { id } = parent;
-    return context.prisma.personnelMeta({ id }).documents();
+    return context.prisma
+      .personnelMeta({ id })
+      .documents({ where: { is_deleted: false } });
   },
   references: async (parent, args, context, info) => {
     const { id } = parent;
