@@ -1,6 +1,7 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { UserType } from "../constants";
+import { env } from "../env";
 
 export const getHashedPassword = async ({ password }) => {
   const hashed_password = await bcrypt.hash(password, 10);
@@ -8,7 +9,7 @@ export const getHashedPassword = async ({ password }) => {
 };
 
 export const jwtSign = ({ id }) => {
-  const token = jwt.sign({ userId: id }, process.env.APP_SECRET);
+  const token = jwt.sign({ userId: id }, env.APP_SECRET);
   return { token };
 };
 

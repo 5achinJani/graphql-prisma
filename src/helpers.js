@@ -1,14 +1,10 @@
+import { s3 } from "./services/aws";
 
-import aws from "aws-sdk";
+export const getUniqueId = () => {
+  return Date.now();
+};
 
-const bucket_name = "app-docs";
-const s3 = new aws.S3({
-  params: { Bucket: bucket_name },
-  accessKeyId: process.env.APP_AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.APP_AWS_SECRET_ACCESS_KEY
-});
-
-export const processUpload = async (upload, id) => {
+export const processUpload = async (upload, id = getUniqueId()) => {
   if (!upload) {
     throw new Error(`ERROR: No file received.`);
   }
@@ -40,4 +36,25 @@ export const processUpload = async (upload, id) => {
   console.log({ file });
 
   return file;
+};
+
+export const processMutipleUpload = async files => {
+  const result_files = [];
+
+  await Promise.all(
+    files.map(async file => {
+      const contents = await processUpload(file);
+      console.log({ contents });
+      result_files.push(contents);
+    })
+  );
+  return result_files;
+};
+
+export const removeIdsFromArrObj = ({ array }) => {
+  const result = array.map(value => {
+    const { id, ...rest } = value;
+    return rest;
+  });
+  return result;
 };

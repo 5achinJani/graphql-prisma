@@ -3,14 +3,22 @@ import { GraphQLServer } from "graphql-yoga";
 import { prisma } from "./generated/prisma-client";
 import { resolvers } from "./resolvers";
 import typeDefs from "./schema.graphql";
+import { permissions } from "./permissions/index";
+import { getUserId } from "./common";
 
 const server = new GraphQLServer({
   typeDefs,
   resolvers,
-  context: request => {
+  middlewares: [permissions],
+  context: context => {
     return {
-      ...request,
-      prisma
+      ...context,
+      prisma,
+      app: {
+        user: {
+          id: getUserId(context)
+        }
+      }
     };
   }
 });

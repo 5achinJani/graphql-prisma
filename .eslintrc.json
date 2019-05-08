@@ -11,5 +11,6 @@
   "rules": {
     "no-unused-vars": "warn",
     "no-console": "warn"
-  }
+  },
+  "parser": "babel-eslint"
 }

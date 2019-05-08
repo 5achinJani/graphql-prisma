@@ -48,26 +48,13 @@ export const singleUploadPersonnelDoc = async (root, args, context, info) => {
 
   if (!doc_id) {
     //check if the doc_type entry already exists for doc_type who have isMultipleAllowed = false
-    /* following query returns an object instead of array so using prisma.$graphql instead  */
-    /*
-    const doesDocExists = context.prisma
-      .personnelMeta({ id: personnel_id })
-      .documents({ where: { doc_type } });
-      */
 
-    const query = `
-            query  {
-              personnelMeta(where: { id: "${personnel_id}" }) {
-                documents(where: { doc_type: ${doc_type} }) {
-                  id
-                  doc_type
-                }
-              }
-            }`;
-    const {
-      personnelMeta: { documents }
-    } = await context.prisma.$graphql(query);
-    console.log({ documents, doc: documents[0] });
+    const documents = await context.prisma
+      .personnelMeta({ id: personnel_id })
+      .documents({
+        where: { AND: { is_deleted: false, doc_type } }
+      });
+    console.log({ documents });
 
     const doesDocExists = documents.length;
     const isMultipleAllowed =
@@ -94,9 +81,23 @@ export const singleUploadPersonnelDoc = async (root, args, context, info) => {
     data: {
       documents: {
         upsert: {
-          update: { doc_type, doc_name, filename, encoding, mimetype, url },
+          update: {
+            doc_type,
+            doc_name,
+            filename,
+            encoding,
+            mimetype,
+            url
+          },
           where: { id: doc_id },
-          create: { doc_type, doc_name, filename, encoding, mimetype, url }
+          create: {
+            doc_type,
+            doc_name,
+            filename,
+            encoding,
+            mimetype,
+            url
+          }
         }
       }
     }

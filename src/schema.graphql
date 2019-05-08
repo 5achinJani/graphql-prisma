@@ -4,6 +4,7 @@ scalar Upload
 type Query {
   personnelUser(id: ID!): PersonnelUser
   personnelUsers: [PersonnelUser!]!
+  getPersonnelUsers(data: GetPersonnelUsersInput): [PersonnelUser!]!
   users: [User!]!
 }
 
@@ -161,4 +162,20 @@ input CreatePersonnelReferencesInput {
 input UpdatePersonnelReferencesInput {
   personnel_id: ID!
   references: [UpdatePersonnelReferencesInputFields!]!
+}
+
+input GetPersonnelUsersInput {
+  filters: GetPersonnelUsersFilters
+  pagination: GetPersonnelUsersPaginate
+}
+
+input GetPersonnelUsersFilters {
+  tier_level: PersonnelTierLevels
+  doc_type: PersonnelDocumentTypes
+  search: String
+}
+
+input GetPersonnelUsersPaginate {
+  first: Int
+  after: ID
 }

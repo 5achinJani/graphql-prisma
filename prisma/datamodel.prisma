@@ -1,15 +1,19 @@
 type Post {
-  id: ID! @unique
-  published: Boolean! @default(value: "false")
+  id: ID! @id
+  published: Boolean! @default(value: false)
   title: String!
   content: String!
-  comments: [Comment]
+  comments: [Comment]  @relation(link: TABLE)
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
 }
 
 type Comment {
-  id: ID! @unique
+  id: ID! @id
   content: String
-  is_deleted: Boolean @default(value: "false")
+  is_deleted: Boolean @default(value: false)
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
 }
 
 enum UserType {
@@ -31,68 +35,68 @@ enum PersonnelDocumentTypes {
 }
 
 type User {
-  id: ID! @unique
+  id: ID! @id
   email: String! @unique
   password: String!
   name: String
   address: String
   city: String
+  state: String
   zip: String
   phone: String
   company: String
   date_of_birth: DateTime
   type: UserType
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
 }
 
 type PersonnelMeta {
-  id: ID! @unique
-  user: User!
+  id: ID! @id
+  user: User!  @relation(link: INLINE)
   driving_licence_id: String
   biograhpy: String
   experience: String
   certification: String
   social_security_number: String
-  documents: [PersonnelDocuments!]
-  photos: [PersonnelPhotos!]
-  references: [PersonnelReferences!]
-  interviewed_by: [PersonnelInterview!]
-  is_background_checked: Boolean @default(value: "false")
-  is_verified: Boolean @default(value: "false")
-  is_consent_checked: Boolean @default(value: "false")
-  is_creds_verified: Boolean @default(value: "false")
-  is_reference_verified: Boolean @default(value: "false")
+  documents: [PersonnelDocuments!] @relation(link: TABLE)
+  photos: [PersonnelPhotos!] @relation(link: TABLE)
+  references: [PersonnelReferences!] @relation(link: TABLE)
+  interviews: [PersonnelInterview!] @relation(link: TABLE)
+  is_verified: Boolean @default(value: false)
   createdAt: DateTime!
   updatedAt: DateTime!
 }
 
 type PersonnelDocuments {
-  id: ID! @unique
+  id: ID! @id
   doc_name: String!
   doc_type: PersonnelDocumentTypes!
   filename: String!
   mimetype: String!
   encoding: String!
   url: String!
-  is_verified: Boolean @default(value: "false")
+  is_verified: Boolean @default(value: false)
+  expiry_date: DateTime
+  is_deleted: Boolean @default(value: false)
   createdAt: DateTime!
   updatedAt: DateTime!
 }
 
 type PersonnelPhotos {
-  id: ID! @unique
+  id: ID! @id
   filename: String!
   mimetype: String!
   encoding: String!
   url: String!
-  is_primary: Boolean @default(value: "false")
+  is_primary: Boolean @default(value: false)
+  is_deleted: Boolean @default(value: false)
   createdAt: DateTime!
   updatedAt: DateTime!
 }
 
 type PersonnelReferences {
-  id: ID! @unique
+  id: ID! @id
   email: String!
   name: String!
   phone: String!
@@ -101,8 +105,8 @@ type PersonnelReferences {
 }
 
 type PersonnelInterview {
-  id: ID! @unique
-  interviewed_by: User!
+  id: ID! @id
+  interviewed_by: User! @relation(link: INLINE)
   interviewed_date: DateTime!
   status: String!
   createdAt: DateTime!

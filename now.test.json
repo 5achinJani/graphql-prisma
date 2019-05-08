@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "public": true,
+  "name": "test-my-app",
+  "alias": "test-my-app",
+  "builds": [{ "src": "build/main.js", "use": "@now/node-server" }],
+  "routes": [{ "src": "/.*", "dest": "build/main.js" }],
+  "target": "staging",
+  "env": {
+    "PRISMA_SECRET": "@PRISMA_SECRET",
+    "APP_SECRET": "@APP_SECRET",
+    "PRISMA_MANAGEMENT_API_SECRET": "@PRISMA_MANAGEMENT_API_SECRET",
+    "MANAGEMENT_API_SECRET": "@MANAGEMENT_API_SECRET",
+    "APP_AWS_ACCESS_KEY_ID": "@APP_AWS_ACCESS_KEY_ID",
+    "APP_AWS_SECRET_ACCESS_KEY": "@APP_AWS_SECRET_ACCESS_KEY",
+    "PRISMA_ENDPOINT": "@PRISMA_ENDPOINT"
+  }
+}
