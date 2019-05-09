@@ -22,6 +22,11 @@
 - `yarn dev` - To start the development server with debug mode.
 -  `yarn dev-deploy` / `yarn test-deploy` /`yarn prod-deploy` - to generate the buld and deploy prisma server and graphql server
 
+## Global CLI installation:
+- **[aws-cli](https://github.com/aws/aws-cli)**: Required if you're using S3 to upload files.
+- **[aws-elasticbeanstalk](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3.html)**: Required if you're deploying your GraphQL server on aws-elasticbeanstalk.
+
+
 -Other commands
 -  To generate the build
 ```json
