@@ -13,6 +13,14 @@ var models = [
     embedded: false
   },
   {
+    name: "UserType",
+    embedded: false
+  },
+  {
+    name: "PersonnelDocumentTypes",
+    embedded: false
+  },
+  {
     name: "User",
     embedded: false
   },
@@ -35,17 +43,8 @@ var models = [
   {
     name: "PersonnelInterview",
     embedded: false
-  },
-  {
-    name: "UserType",
-    embedded: false
-  },
-  {
-    name: "PersonnelDocumentTypes",
-    embedded: false
   }
 ];
-console.log("Prisma client:", process.env["PRISMA_ENDPOINT"])
 exports.Prisma = prisma_lib_1.makePrismaClientClass({
   typeDefs,
   models,

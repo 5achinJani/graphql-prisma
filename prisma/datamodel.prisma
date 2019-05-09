@@ -64,8 +64,8 @@ type PersonnelMeta {
   references: [PersonnelReferences!] @relation(link: TABLE)
   interviews: [PersonnelInterview!] @relation(link: TABLE)
   is_verified: Boolean @default(value: false)
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
 }
 
 type PersonnelDocuments {
@@ -79,8 +79,8 @@ type PersonnelDocuments {
   is_verified: Boolean @default(value: false)
   expiry_date: DateTime
   is_deleted: Boolean @default(value: false)
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
 }
 
 type PersonnelPhotos {
@@ -91,8 +91,8 @@ type PersonnelPhotos {
   url: String!
   is_primary: Boolean @default(value: false)
   is_deleted: Boolean @default(value: false)
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
 }
 
 type PersonnelReferences {
@@ -100,8 +100,8 @@ type PersonnelReferences {
   email: String!
   name: String!
   phone: String!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
 }
 
 type PersonnelInterview {
@@ -109,6 +109,6 @@ type PersonnelInterview {
   interviewed_by: User! @relation(link: INLINE)
   interviewed_date: DateTime!
   status: String!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
 }
