@@ -14,7 +14,7 @@
     "now-deploy-dev": "NODE_ENV=development yarn build && now --local-config=now.development.json",
     "now-deploy-test": "NODE_ENV=test yarn build && now --local-config=now.test.json",
     "now-deploy-prod": "NODE_ENV=production yarn build && now --local-config=now.production.json",
-    "prisma-deploy-dev": "prisma deploy --force --env-file .development.env",
+    "prisma-deploy-dev": "prisma deploy --env-file .development.env",
     "prisma-deploy-test": "prisma deploy --env-file .test.env",
     "prisma-deploy-prod": "prisma deploy --env-file .production.env",
     "prisma-reset-dev": "prisma reset --env-file .development.env",
