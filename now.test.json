@@ -1,8 +1,8 @@
 {
   "version": 2,
   "public": true,
-  "name": "test-my-app",
-  "alias": "test-my-app",
+  "name": "test-graphql-prisma",
+  "alias": "test-graphql-prisma",
   "builds": [{ "src": "build/main.js", "use": "@now/node-server" }],
   "routes": [{ "src": "/.*", "dest": "build/main.js" }],
   "target": "staging",

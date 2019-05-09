@@ -1,8 +1,8 @@
 {
   "version": 2,
   "public": true,
-  "name": "dev-my-app",
-  "alias": "dev-my-app",
+  "name": "dev-graphql-prisma",
+  "alias": "dev-graphql-prisma",
   "builds": [{ "src": "build/main.js", "use": "@now/node-server" }],
   "routes": [{ "src": "/.*", "dest": "build/main.js" }],
   "target": "staging",

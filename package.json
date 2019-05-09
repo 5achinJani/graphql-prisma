@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "graphql-prisma",
   "scripts": {
     "start": "node build/main.js",
     "prisma": "prisma",
